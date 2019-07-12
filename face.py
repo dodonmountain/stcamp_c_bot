@@ -18,11 +18,11 @@ def yourface(pic):
     response = requests.post(naver_url,
                             headers = headers,
                             files = {'image': image}).json()
-
-    best = response.get('faces')[0].get('celebrity')
-    if best.get('confidence')>0.2:
-        text = f"{best.get('confidence')*100}만큼 {best.get('value')}를 닮으셨네요~"
-        return text
-    else:
-        text = "U r Not Human."
-        return text
+    if response.get('faces'):
+        best = response.get('faces')[0].get('celebrity')
+        if best.get('confidence')>0.2:
+            text = f"{best.get('confidence')*100}만큼 {best.get('value')}를 닮으셨네요~"
+            return text
+        else:
+            text = "U r Not Human."
+            return text
