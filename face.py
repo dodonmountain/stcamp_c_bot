@@ -24,5 +24,8 @@ def yourface(pic):
             text = f"{best.get('confidence')*100}만큼 {best.get('value')}를 닮으셨네요~"
             return text
         else:
-            text = "U r Not Human."
+            text = "연예인을 닮지 않으셨네요"
             return text
+    else:
+        text = "사람아님"
+        return text
